@@ -125,6 +125,7 @@ function App() {
     );
     setEmployees(transformedEmployees);
   }
+
   return (
     <div>
       <Router>
@@ -149,7 +150,7 @@ function App() {
             }
           />
           <Route
-            path="/GroupedTeamMembers"
+            path="/Teams"
             element={
               <GroupedTeamMembers
                 employees={employees}
