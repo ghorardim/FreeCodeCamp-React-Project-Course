@@ -1,7 +1,10 @@
 import femaleProfile from './images/femaleProfile.jpg';
 import maleProfile from './images/maleProfile.jpg';
+import { useContext } from 'react';
+import DataContext from './context/DataContext';
 
-const TeamMemberCard = ({ employee, selectedTeam, handleEmployeeCardClick }) => {
+const TeamMemberCard = ({ employee }) => {
+  const { selectedTeam, handleEmployeeCardClick } = useContext(DataContext);
   return (
     <div
       id={employee.id}

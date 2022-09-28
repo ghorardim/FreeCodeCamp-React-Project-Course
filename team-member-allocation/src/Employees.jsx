@@ -1,30 +1,18 @@
 import Teams from './Teams';
 import TeamMembers from './TeamMembers';
 
-const Employees = ({
-  employees,
-  selectedTeam,
-  handleTeamSelectionChange,
-  handleEmployeeCardClick,
-}) => {
+const Employees = () => {
   return (
     <main className="container">
       <div className="row justify-content-center">
         <div className="col-6">
-          <Teams
-            selectedTeam={selectedTeam}
-            handleTeamSelectionChange={handleTeamSelectionChange}
-          />
+          <Teams />
         </div>
       </div>
       <div className="row justify-content-center">
         <div className="col-8">
           <div className="card-collection">
-            <TeamMembers
-              employees={employees}
-              selectedTeam={selectedTeam}
-              handleEmployeeCardClick={handleEmployeeCardClick}
-            />
+            <TeamMembers />
           </div>
         </div>
       </div>
