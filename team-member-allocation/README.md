@@ -1,4 +1,6 @@
 Instructor: Gavin Lon
+
+Instructor Code: https://github.com/GavinLonDigital/TeamMemberAllocationApp
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
