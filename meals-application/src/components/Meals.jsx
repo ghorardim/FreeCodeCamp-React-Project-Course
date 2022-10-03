@@ -10,7 +10,6 @@ const Meals = () => {
           <article key={idMeal} className="single-meal">
             <img
               src={image}
-              style={{ width: '200px' }}
               className="img"
               alt={title + 'image'}
             />
