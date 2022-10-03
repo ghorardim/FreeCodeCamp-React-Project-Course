@@ -167,13 +167,16 @@ ul {
 /* Search */
 /* Favorites */
 /* Meals */
-.section-center {
-  padding: 3rem 0;
-  width: var(--view-width);
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: grid;
-  gap: 2rem;
+.section,.section-center{
+  padding:3rem 0;
+  width:var(--view-width);
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+
+.section-center{
+  display:grid;
+  gap:2rem;
 }
 
 @media screen and (min-width: 776px) {
