@@ -37,8 +37,8 @@ export const StockList = () => {
     return change > 0 ? 'success' : 'danger';
   };
   const renderIcon = (change) => {
-    return change > 0 ? <BsFillCaretUpFill /> : <BsFillCaretDownFill />
-  }
+    return change > 0 ? <BsFillCaretUpFill /> : <BsFillCaretDownFill />;
+  };
   return (
     <div>
       <table className="table hover mt-5">
