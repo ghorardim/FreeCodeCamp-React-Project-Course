@@ -12,13 +12,34 @@ export const AutoComplete = () => {
             q: search,
           },
         });
-        setResults(res.data.result);
+        if (isMounted) setResults(res.data.result);
       } catch (error) {}
     };
     if (search) fetchData();
     else setResults([]);
     return () => (isMounted = false);
   }, [search]);
+  const renderDropdown = () => {
+    const dropDownClass = results.length > 0 ? 'show' : null;
+    return (
+      <ul
+        className={`dropdown-menu ${dropDownClass}`}
+        style={{
+          height: '500px',
+          overflowY: 'scroll',
+          overflowX: 'hidden',
+          cursor: 'pointer',
+        }}>
+        {results.map((stock) => {
+          return (
+            <li key={stock.symbol}className="dropdown-item">
+              {stock.description} ({stock.symbol})
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
   return (
     <div className="w-50 p-5 rounded mx-auto">
       <div className="form-floating dropdown">
@@ -32,6 +53,7 @@ export const AutoComplete = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}></input>
         <label htmlFor="search">Search</label>
+        {renderDropdown()}
       </div>
     </div>
   );
