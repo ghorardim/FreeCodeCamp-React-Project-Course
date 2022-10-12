@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import finnHub from '../apis/finnHub';
 import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs';
 import { WatchListContext } from '../context/watchListContext';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const StockList = () => {
   const [stock, setStock] = useState([]);
-  const {watchList} = useContext(WatchListContext);
+  const { watchList, deleteStock } = useContext(WatchListContext);
   const navigate = useNavigate();
   useEffect(() => {
     let isMounted = true;
@@ -21,7 +21,6 @@ export const StockList = () => {
             });
           })
         );
-        console.log(responses);
         const data = responses.map((response) => {
           return {
             data: response.data,
@@ -43,8 +42,8 @@ export const StockList = () => {
     return change > 0 ? <BsFillCaretUpFill /> : <BsFillCaretDownFill />;
   };
   const handleStockSelect = (symbol) => {
-    navigate(`detail/${symbol}`)
-  }
+    navigate(`detail/${symbol}`);
+  };
   return (
     <div>
       <table className="table hover mt-5">
@@ -63,7 +62,11 @@ export const StockList = () => {
         <tbody>
           {stock.map((stockData) => {
             return (
-              <tr style={{ cursor: 'pointer' }} className="table-row" key={stockData.symbol} onClick={() => handleStockSelect(stockData.symbol)} >
+              <tr
+                style={{ cursor: 'pointer' }}
+                className="table-row"
+                key={stockData.symbol}
+                onClick={() => handleStockSelect(stockData.symbol)}>
                 <th scope="row">{stockData.symbol}</th>
                 <td>{stockData.data.c}</td>
                 <td className={`text-${changeColor(stockData.data.d)}`}>
@@ -75,7 +78,17 @@ export const StockList = () => {
                 <td>{stockData.data.h}</td>
                 <td>{stockData.data.l}</td>
                 <td>{stockData.data.o}</td>
-                <td>{stockData.data.pc}</td>
+                <td>
+                  {stockData.data.pc}{' '}
+                  <button
+                    className="btn btn-danger btn-sm ml-3 d-inline-block delete-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteStock(stockData.symbol);
+                    }}>
+                    Remove
+                  </button>
+                </td>
               </tr>
             );
           })}
